@@ -1,5 +1,6 @@
 .container {
-    max-width: 600px;
+    min-height: 100%;
+    width: 100%;
     margin: 0 auto;
     overflow-y: auto;
     &::-webkit-scrollbar {
@@ -28,7 +29,7 @@
     }
 }
 .questionList {
-    height: calc(100vh - 132px);
+    height: auto;
     overflow-y: auto;
     padding: 30px 10px;
     display: flex;
