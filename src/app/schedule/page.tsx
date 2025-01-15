@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import ScheduleMap from '@/components/schedule/ScheduleMap';
-import Styles from '@styles/appStyles/schedule/scheduleMap.module.scss';
+import Styles from '@styles/appStyles/schedule/ScheduleMap.module.scss';
 import { useMapContext } from '@/components/MapProvider';
 import { PlaceDetails } from '@/types/PlaceDetails';
 
