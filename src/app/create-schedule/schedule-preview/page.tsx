@@ -35,7 +35,13 @@ export default function PreviewSpotsContainer() {
     const [showPackingList, setShowPackingList] = useState(false);
 
     const [isSaving, setIsSaving] = useState(false);
+    const [showDeleteButton, setShowDeleteButton] = useState(false);
 
+    useEffect(() => {
+        const profileEdit = sessionStorage.getItem('profileScheduleEdit');
+        const editSchedules = sessionStorage.getItem('editSchedules');
+        setShowDeleteButton(!!(profileEdit || editSchedules));
+    }, []);
     useEffect(() => {
         const editSchedules = sessionStorage.getItem('editSchedules');
         const regularSchedules = sessionStorage.getItem('schedules');
@@ -178,9 +184,11 @@ export default function PreviewSpotsContainer() {
         <div className={styles.container}>
             <div className={styles.dateNav}>
                 <div className={styles.header}>
-                    <div className={styles.deleteBtn} onClick={handleDeleteScheduleClick}>
-                        <RiDeleteBin6Line className={styles.delete} color="red" size={20} />
-                    </div>
+                    {showDeleteButton && (
+                        <div className={styles.deleteBtn} onClick={handleDeleteScheduleClick}>
+                            <RiDeleteBin6Line className={styles.delete} color="red" size={20} />
+                        </div>
+                    )}
                     <IoIosArrowBack color="white" size={30} className={styles.back} onClick={handleBackClick} />
                     <HiOutlinePencil color="white" className={styles.edit} onClick={handleTitleClick} />
                     {isEditingTitle ? (
