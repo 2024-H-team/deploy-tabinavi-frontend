@@ -1,0 +1,152 @@
+/* TimelinePreview.module.scss */
+
+.timelineContainer {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f8f8f8;
+    padding: 1rem;
+    box-sizing: border-box;
+    position: relative;
+    overflow: auto;
+}
+
+/* Thanh tiêu đề + khoảng ngày ở trên cùng */
+.topHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 1rem;
+    h1 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin: 0;
+    }
+    .dateRange {
+        font-size: 0.9rem;
+        color: #666;
+    }
+}
+
+/* Tabs để chuyển qua các ngày (nếu bạn muốn hiển thị cả 01/14, 01/15, 01/16) */
+.dayTabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .dayTab {
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        background-color: #ddd;
+        cursor: pointer;
+        &:hover {
+            background-color: #ccc;
+        }
+
+        &.active {
+            background-color: #4285f4;
+            color: #fff;
+            font-weight: bold;
+        }
+    }
+}
+
+/* Mỗi cột dọc tương ứng 1 ngày */
+.dayTimeline {
+    margin-bottom: 2rem;
+    position: relative;
+
+    /* Đường kẻ dọc timeline */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 30px; /* canh so với .timeDot */
+        width: 2px;
+        height: 100%;
+        background-color: #ccc;
+        z-index: 0;
+    }
+}
+
+/* Block item chính */
+.timelineItem {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    margin-bottom: 1rem;
+
+    /* Giờ/Thời gian hiển thị bên trái */
+    .timeLabel {
+        margin-right: 10px;
+        min-width: 50px;
+        text-align: right;
+        font-size: 0.9rem;
+        color: #555;
+        margin-top: 5px;
+    }
+
+    .timeDot {
+        position: relative;
+        width: 16px;
+        height: 16px;
+        background-color: #4285f4;
+        border-radius: 50%;
+        margin-top: 4px; /* để canh giữa đường line */
+        margin-right: 20px;
+        z-index: 1;
+    }
+
+    .itemContent {
+        background-color: #fff;
+        border-radius: 4px;
+        padding: 0.8rem;
+        flex: 1;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 1;
+
+        .spotTitle {
+            font-size: 1rem;
+            font-weight: bold;
+            margin: 0 0 4px 0;
+        }
+
+        .subInfo {
+            font-size: 0.85rem;
+            color: #888;
+        }
+    }
+}
+
+/* Di chuyển (TravelTimeCalculator) */
+.travelBlock {
+    margin: 0.5rem 0 1rem 0;
+    padding: 0.5rem 0.8rem;
+    background-color: #e0f7fa;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    select {
+        margin-right: auto;
+    }
+}
+
+/* Nút cuối */
+.confirmButton {
+    width: 100%;
+    text-align: center;
+    background-color: #00c853;
+    color: #fff;
+    padding: 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    &:hover {
+        background-color: #00b14f;
+    }
+}

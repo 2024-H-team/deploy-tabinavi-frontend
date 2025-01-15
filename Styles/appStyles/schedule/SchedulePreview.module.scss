@@ -1,0 +1,181 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #e7e7e7;
+    position: relative;
+    padding-bottom: 100px;
+    .dateNav {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        .header {
+            width: 100%;
+            height: 95px;
+            padding: 12px 50px;
+            padding-left: 70px;
+            padding-top: 20px;
+            background: #436eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 8px;
+            position: relative;
+            .back {
+                position: absolute;
+                top: 50%;
+                left: 20px;
+                transform: translateY(-50%);
+                width: 30px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .edit {
+                position: absolute;
+                top: 45%;
+                right: 25%;
+                transform: translateY(-50%);
+                width: 20px;
+                height: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .deleteBtn {
+                position: absolute;
+                top: 45%;
+                right: 5%;
+                transform: translateY(-50%);
+                width: 30px;
+                height: 30px;
+                background-color: rgba(255, 255, 255, 0.5);
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .title {
+                font-size: 24px;
+                color: #fdfdfd;
+            }
+            .titleInput {
+                font-size: 24px;
+                color: #222222;
+                border: none;
+                background: #fdfdfd;
+                width: 250px;
+            }
+            .dateInfo {
+                font-size: 16px;
+                color: #fdfdfd;
+                font-weight: 500;
+            }
+        }
+        .dateSelect {
+            width: 100%;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+            flex-wrap: nowrap;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+
+            &::-webkit-scrollbar {
+                height: 4px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 2px;
+            }
+
+            div {
+                height: 100%;
+                min-width: 100px;
+                flex-shrink: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 16px;
+                color: #bdbdbd;
+                position: relative;
+                &.active {
+                    background: rgba(123, 195, 255, 0.15);
+                    color: #436eee;
+                    font-weight: 700;
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 3px;
+                        background: #436eee;
+                    }
+                }
+            }
+        }
+    }
+    .timeInfo {
+        width: 100%;
+        text-align: left;
+        margin-top: 15px;
+        padding-bottom: 8px;
+        padding-left: 20px;
+        font-size: 12px;
+        color: #7d7d7d;
+    }
+    .selectedSpot {
+        width: 100%;
+    }
+    .btnBox {
+        width: 100%;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 0 24px;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        .saveButton {
+            width: 70%;
+            height: 50px;
+            border-radius: 6px;
+            background: #436eee;
+            font-size: 18px;
+            color: #fdfdfd;
+            font-weight: 500;
+        }
+        .addButton {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            border: 3px solid #cccccc;
+            &.active {
+                border: 3px solid #436eee;
+                svg {
+                    color: #436eee;
+                }
+            }
+        }
+    }
+}

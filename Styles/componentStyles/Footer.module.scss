@@ -1,0 +1,16 @@
+.FooterWrap {
+    background-color: #436eee;
+    width: 100%;
+    height: 60px;
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    .NavBtn {
+        text-align: center;
+        color: #fff;
+        font-size: 12px;
+    }
+}

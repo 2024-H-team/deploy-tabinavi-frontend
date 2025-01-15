@@ -1,0 +1,112 @@
+.PreviewSpotItem {
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 20px;
+    padding-left: 50px;
+    position: relative;
+    background-color: #f5f5f5;
+    .packingList {
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        .item {
+            padding: 5px;
+            background-color: #e0e0e0;
+            font-size: 12px;
+            border-radius: 5px;
+            max-width: 100px;
+            word-break: break-all;
+        }
+    }
+    .dragHolder {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 30px;
+        cursor: pointer;
+        padding: 10px;
+    }
+    .bar {
+        height: 80%;
+        width: 5px;
+        background-color: #a5da51;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 40px;
+        border-radius: 4px;
+    }
+    .spotEdit {
+        position: absolute;
+        top: 50%;
+        right: 10%;
+        transform: translateY(-50%);
+        color: blue;
+    }
+    .closeBtn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: rgb(102, 102, 102);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 700;
+        width: 25px;
+        height: 25px;
+        text-align: center;
+        line-height: 25px;
+    }
+    h2 {
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0;
+        color: #302f34;
+    }
+    .stayTime {
+        font-size: 12px;
+        color: #bdbdbd;
+    }
+    .timePicker {
+        display: flex;
+        gap: 20px;
+    }
+}
+.travelTimeCalculator {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    .modeSelect {
+        width: 100px;
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: white;
+        font-size: 16px;
+    }
+    .duration {
+        margin: 0;
+        font-size: 16px;
+        display: flex;
+        .transferDetail {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: blue;
+            padding: 0 10px 0 15px;
+        }
+    }
+}

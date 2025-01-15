@@ -1,0 +1,24 @@
+.btnBox {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    width: 800px;
+    gap: 15px;
+    .routing {
+        width: 48%;
+    }
+    button {
+        width: 48%;
+        height: 40px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #fff;
+        background-color: #7c645d;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

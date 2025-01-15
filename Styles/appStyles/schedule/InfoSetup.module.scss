@@ -1,0 +1,205 @@
+.infoSetup {
+    padding: 20px;
+    min-height: calc(100% - 60px);
+    h2 {
+        text-align: center;
+    }
+    position: relative;
+}
+.titleBox {
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0px 1px 8px 2px rgba(0, 0, 0, 0.07);
+    padding: 8px;
+    border-radius: 0.8rem;
+    p {
+        color: #898989;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: #fff;
+        height: 42px;
+    }
+}
+.toggleGroup {
+    margin-top: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0px 1px 8px 2px rgba(0, 0, 0, 0.07);
+    padding: 8px;
+    border-radius: 0.8rem;
+    .toggleLabel {
+        margin-right: 10px;
+        color: #898989;
+        font-size: 14px;
+    }
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 55px;
+        height: 28px;
+        margin-right: 10px;
+        input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #c1c1c1;
+            transition: 0.4s;
+            border-radius: 34px;
+            &:before {
+                position: absolute;
+                content: '';
+                height: 20px;
+                width: 20px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                transition: 0.4s;
+                border-radius: 50%;
+            }
+        }
+        input:checked + .slider {
+            background-color: #2196f3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(27px);
+        }
+    }
+}
+.datePickerContainer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0px 1px 8px 2px rgba(0, 0, 0, 0.07);
+    padding: 8px;
+    border-radius: 0.8rem;
+    margin-bottom: 20px;
+    .datePickerGroup {
+        margin-bottom: 20px;
+        width: 48%;
+        p {
+            margin-bottom: 10px;
+            color: #898989;
+            font-size: 14px;
+        }
+        .dateText {
+            &[data-checked='true'] {
+                &::after {
+                    content: '日付を選択';
+                }
+            }
+
+            &[data-checked='false'] {
+                &::after {
+                    content: '開始日';
+                }
+            }
+        }
+        input[type='date'] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #fff;
+            height: 42px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 20px;
+
+            &::-webkit-calendar-picker-indicator {
+                opacity: 0;
+            }
+
+            &::-webkit-inner-spin-button {
+                display: none;
+            }
+
+            &::-webkit-clear-button {
+                display: none;
+            }
+        }
+    }
+}
+
+.daySchedule {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 1px 8px 2px rgba(0, 0, 0, 0.07);
+    padding: 8px;
+    border-radius: 0.8rem;
+    .date {
+        margin-bottom: 10px;
+        color: #898989;
+        font-size: 14px;
+    }
+    .timePickerGroup {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        gap: 20px;
+        span {
+            line-height: 48px;
+        }
+        .pickers {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            color: #898989;
+            font-size: 14px;
+            p {
+                line-height: 30px;
+                padding: 0 5px;
+            }
+            .pickersBlock {
+                display: flex;
+                align-items: center;
+                .timePicker {
+                    width: 100px;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+.btnBox {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    .submitButton {
+        width: 320px;
+        padding: 10px 20px;
+        background-color: #0070f3;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .submitButton:hover {
+        background-color: #005bb5;
+    }
+}
