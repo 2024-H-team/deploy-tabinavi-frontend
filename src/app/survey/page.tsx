@@ -256,7 +256,7 @@ export default function SurveyPage() {
                     </div>
                 ))}
                 <button className={styles.submitButton} onClick={handleSubmit}>
-                    Submit
+                    送信
                 </button>
             </div>
         </div>
