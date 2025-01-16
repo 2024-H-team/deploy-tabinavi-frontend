@@ -122,6 +122,10 @@ export default function PreviewSpotsContainer() {
                 currentDay.spots = arrayMove(currentDay.spots, oldIndex, newIndex);
                 newSchedules[activeDateIndex] = currentDay;
                 sessionStorage.setItem('schedules', JSON.stringify(newSchedules));
+                const editSchedules = sessionStorage.getItem('editSchedules');
+                if (editSchedules) {
+                    sessionStorage.setItem('editSchedules', JSON.stringify(newSchedules));
+                }
                 return newSchedules;
             });
         }
@@ -135,6 +139,11 @@ export default function PreviewSpotsContainer() {
                     const currentDay = { ...newSchedules[activeDateIndex] };
                     currentDay.spots = currentDay.spots.filter((spot) => spot.name !== spotName);
                     newSchedules[activeDateIndex] = currentDay;
+                    sessionStorage.setItem('schedules', JSON.stringify(newSchedules));
+                    const editSchedules = sessionStorage.getItem('editSchedules');
+                    if (editSchedules) {
+                        sessionStorage.setItem('editSchedules', JSON.stringify(newSchedules));
+                    }
                     return newSchedules;
                 });
             }
@@ -167,6 +176,10 @@ export default function PreviewSpotsContainer() {
                 newSchedules[activeDateIndex] = currentDay;
                 // Save immediately after updating
                 sessionStorage.setItem('schedules', JSON.stringify(newSchedules));
+                const editSchedules = sessionStorage.getItem('editSchedules');
+                if (editSchedules) {
+                    sessionStorage.setItem('editSchedules', JSON.stringify(newSchedules));
+                }
                 return newSchedules;
             });
         },
@@ -188,6 +201,10 @@ export default function PreviewSpotsContainer() {
                 title: titleValue,
             }));
             sessionStorage.setItem('schedules', JSON.stringify(newSchedules));
+            const editSchedules = sessionStorage.getItem('editSchedules');
+            if (editSchedules) {
+                sessionStorage.setItem('editSchedules', JSON.stringify(newSchedules));
+            }
             return newSchedules;
         });
     };

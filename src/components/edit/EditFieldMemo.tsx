@@ -32,6 +32,10 @@ export default function EditFieldMemo({ title, value, placeId }: EditFieldMemoPr
             schedule.spots = schedule.spots.map((s) => (s.placeId === placeId ? { ...s, note: newNote } : s));
         });
         sessionStorage.setItem('schedules', JSON.stringify(schedules));
+        const editSchedules = sessionStorage.getItem('editSchedules');
+        if (editSchedules) {
+            sessionStorage.setItem('editSchedules', JSON.stringify(schedules));
+        }
     };
 
     const handleEnableEdit = () => {

@@ -31,6 +31,10 @@ export default function EditFieldTime({ title, spot }: EditFieldTimeProps) {
             );
         });
         sessionStorage.setItem('schedules', JSON.stringify(schedules));
+        const editSchedules = sessionStorage.getItem('editSchedules');
+        if (editSchedules) {
+            sessionStorage.setItem('editSchedules', JSON.stringify(schedules));
+        }
     };
 
     const handleTimeChange = (type: 'hour' | 'minute', value: string) => {

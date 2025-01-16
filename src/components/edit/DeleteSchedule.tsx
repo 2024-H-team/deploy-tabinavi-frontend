@@ -20,6 +20,9 @@ export default function DeleteSchedule() {
         }));
 
         sessionStorage.setItem('schedules', JSON.stringify(updatedSchedules));
+        if (sessionStorage.getItem('editSchedules')) {
+            sessionStorage.setItem('editSchedules', JSON.stringify(updatedSchedules));
+        }
         sessionStorage.removeItem('editSpot');
 
         router.push('/create-schedule/schedule-preview');

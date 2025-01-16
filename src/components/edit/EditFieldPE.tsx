@@ -40,6 +40,10 @@ export default function EditFieldPE({ title, data }: EditFieldPEProps) {
             );
         });
         sessionStorage.setItem('schedules', JSON.stringify(schedules));
+        const editSchedules = sessionStorage.getItem('editSchedules');
+        if (editSchedules) {
+            sessionStorage.setItem('editSchedules', JSON.stringify(schedules));
+        }
     };
 
     const handleDelete = (index: number) => {
