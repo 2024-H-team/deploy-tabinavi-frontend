@@ -80,7 +80,7 @@ export default function RegisterPage() {
                             <label>名前</label>
                             <input
                                 {...register('fullName', {
-                                    required: '氏名は必須です',
+                                    required: '名前は必須です',
                                 })}
                                 className={errors.fullName ? styles.error : ''}
                             />
