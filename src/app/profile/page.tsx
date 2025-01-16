@@ -13,6 +13,15 @@ export default function Profile() {
     const [schedules, setSchedules] = useState([]);
     const [loading, setLoading] = useState(true);
     const [viewAll, setViewAll] = useState(false);
+    const [username, setUsername] = useState('');
+
+    useEffect(() => {
+        const userStr = localStorage.getItem('user');
+        if (userStr) {
+            const user = JSON.parse(userStr);
+            setUsername(user.userName || 'ユーザー');
+        }
+    }, []);
 
     useEffect(() => {
         const fetchSchedules = async () => {
@@ -65,15 +74,8 @@ export default function Profile() {
                                 width={150}
                                 height={150}
                             />
-                            <Image
-                                className={styles.avatarImg}
-                                src="/logo1.png"
-                                alt="Avatar"
-                                width={365.5}
-                                height={150}
-                            />
                         </div>
-                        <p className={styles.userName}>{truncateTitle('here is username')}</p>
+                        <p className={styles.userName}>{truncateTitle(username)}</p>
                     </div>
                     <div className={styles.profileInfo}>
                         <div className={styles.buttons}>
