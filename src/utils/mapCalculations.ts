@@ -44,7 +44,7 @@ export const searchNearbyPlaces = async (selectedSpots: PlaceDetails[], types: s
         }
 
         centerLocation = findCenterPoint(farthestPoints[0], farthestPoints[1]);
-        searchRadius = maxDistance / 2 + 500;
+        searchRadius = maxDistance / 2 + 3000;
     }
 
     const service = new google.maps.places.PlacesService(document.createElement('div'));

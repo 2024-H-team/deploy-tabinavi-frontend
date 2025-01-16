@@ -70,6 +70,8 @@ export const handleRecommendClick = async (
     setVisibleRecommendedSpots: React.Dispatch<React.SetStateAction<PlaceDetails[]>>,
     setShowRecommendations: React.Dispatch<React.SetStateAction<boolean>>,
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+    dayStartTime?: string,
+    dayEndTime?: string,
 ) => {
     if (schedules[activeDateIndex]?.spots.length === 0) {
         alert('少なくとも1つの場所を選択してください');
@@ -94,6 +96,8 @@ export const handleRecommendClick = async (
 
         const response = await apiClient.post('/recommended-place-types', {
             selectedPlaces: processedSpots,
+            dayStartTime,
+            dayEndTime,
         });
 
         if (response.data.success) {

@@ -103,6 +103,9 @@ export default function CreateSchedule() {
     );
 
     const handleRecommendClickCallback = useCallback(async () => {
+        const currentSchedule = schedules[activeDateIndex];
+        const dayStartTime = currentSchedule?.startTime;
+        const dayEndTime = currentSchedule?.endTime;
         await handleRecommendClick(
             schedules,
             activeDateIndex,
@@ -110,6 +113,8 @@ export default function CreateSchedule() {
             setVisibleRecommendedSpots,
             setShowRecommendations,
             setIsRecommending,
+            dayStartTime,
+            dayEndTime,
         );
     }, [schedules, activeDateIndex]);
 
