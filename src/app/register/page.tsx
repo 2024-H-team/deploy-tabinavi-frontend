@@ -87,7 +87,7 @@ export default function RegisterPage() {
                             {errors.fullName && <p className={styles.errorText}>{errors.fullName.message}</p>}
                         </div>
                         <div className={styles.formGroup}>
-                            <label>メール</label>
+                            <label>メールアドレス</label>
                             <input
                                 type="email"
                                 {...register('email', {
