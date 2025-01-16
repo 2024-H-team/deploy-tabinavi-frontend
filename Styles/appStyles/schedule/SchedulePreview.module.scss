@@ -6,7 +6,7 @@
     min-height: 100vh;
     background-color: #e7e7e7;
     position: relative;
-    padding-bottom: 100px;
+    padding-bottom: 110px;
     .manualDisplay {
         position: fixed;
         width: 100%;
@@ -239,11 +239,12 @@
     }
     .btnBox {
         width: 100%;
-        height: 80px;
+        height: 100px;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 8px;
         padding: 0 24px;
         position: fixed;
         bottom: 0;
@@ -251,24 +252,40 @@
         background: white;
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
         z-index: 100;
-        .saveButton {
-            width: 70%;
-            height: 50px;
-            border-radius: 6px;
-            background: #436eee;
-            font-size: 18px;
-            color: #fdfdfd;
-            font-weight: 500;
+        .spotAddBtn {
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 8px;
+            color: #302f34;
+            font-weight: 600;
         }
-        .addButton {
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            border: 3px solid #cccccc;
-            &.active {
-                border: 3px solid #436eee;
-                svg {
-                    color: #436eee;
+        .btnContainer {
+            width: 100%;
+            gap: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .saveButton {
+                width: 70%;
+                height: 50px;
+                border-radius: 6px;
+                background: #436eee;
+                font-size: 18px;
+                color: #fdfdfd;
+                font-weight: 500;
+            }
+            .addButton {
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                border: 3px solid #cccccc;
+                &.active {
+                    border: 3px solid #436eee;
+                    svg {
+                        color: #436eee;
+                    }
                 }
             }
         }

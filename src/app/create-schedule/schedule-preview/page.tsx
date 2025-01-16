@@ -24,6 +24,7 @@ import PackingItemList from '@/components/create-schedule/PackingItemList';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { truncateTitle, handleBack, handleSaveSchedule, handleDeleteSchedule } from '@/utils/scheduleUtils';
 import ManualDisplay from '@/components/create-schedule/ManualDisplay';
+import { IoAddCircleOutline } from 'react-icons/io5';
 
 export default function PreviewSpotsContainer() {
     const router = useRouter();
@@ -75,6 +76,7 @@ export default function PreviewSpotsContainer() {
 
         if (editSchedules) {
             setSchedules(JSON.parse(editSchedules));
+            sessionStorage.setItem('schedules', JSON.stringify(JSON.parse(editSchedules)));
         } else if (regularSchedules) {
             setSchedules(JSON.parse(regularSchedules));
         } else {
@@ -207,6 +209,10 @@ export default function PreviewSpotsContainer() {
         await handleDeleteSchedule(schedules, router, sessionStorage);
     };
 
+    const handleAddSpotClick = () => {
+        router.push('/create-schedule/select-spot');
+    };
+
     return (
         <div className={styles.container}>
             {showManual && <ManualDisplay />}
@@ -304,15 +310,21 @@ export default function PreviewSpotsContainer() {
             )}
 
             <div className={styles.btnBox}>
-                <button onClick={handleSave} className={styles.saveButton} disabled={isSaving}>
-                    {isSaving ? '保存中...' : 'スケジュールを確定する'}
-                </button>
-                <button
-                    className={`${styles.addButton} ${getAllPackingItems().length > 0 ? styles.active : ''}`}
-                    onClick={() => setShowPackingList(true)}
-                >
-                    <IoBagAdd color={getAllPackingItems().length > 0 ? 'blue' : 'gray'} size={30} />
-                </button>
+                <div className={styles.spotAddBtn} onClick={handleAddSpotClick}>
+                    <IoAddCircleOutline color="green" size={20} />
+                    予定を追加
+                </div>
+                <div className={styles.btnContainer}>
+                    <button onClick={handleSave} className={styles.saveButton} disabled={isSaving}>
+                        {isSaving ? '保存中...' : 'スケジュールを確定する'}
+                    </button>
+                    <button
+                        className={`${styles.addButton} ${getAllPackingItems().length > 0 ? styles.active : ''}`}
+                        onClick={() => setShowPackingList(true)}
+                    >
+                        <IoBagAdd color={getAllPackingItems().length > 0 ? 'blue' : 'gray'} size={30} />
+                    </button>
+                </div>
             </div>
         </div>
     );

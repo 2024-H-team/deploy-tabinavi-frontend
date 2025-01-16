@@ -112,6 +112,12 @@ export const handleRecommendClick = async (
 // Create schedule by saving to session storage and navigating to preview
 export const handleCreateSchedule = (schedules: DaySchedule[], router: ReturnType<typeof useRouter>) => {
     sessionStorage.setItem('schedules', JSON.stringify(schedules));
+
+    const editSchedules = sessionStorage.getItem('editSchedules');
+    if (editSchedules) {
+        sessionStorage.setItem('editSchedules', JSON.stringify(schedules));
+    }
+
     router.push('/create-schedule/schedule-preview');
 };
 
