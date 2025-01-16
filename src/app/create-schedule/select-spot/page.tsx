@@ -42,6 +42,7 @@ export default function CreateSchedule() {
     const [isRecommending, setIsRecommending] = useState(false);
 
     const stayTimeTimerRef = useRef<NodeJS.Timeout | null>(null);
+    const [showManual, setShowManual] = useState(false);
 
     useEffect(() => {
         const saved = sessionStorage.getItem('schedules');
@@ -51,6 +52,26 @@ export default function CreateSchedule() {
         }
         setSchedules(JSON.parse(saved));
     }, [router]);
+
+    useEffect(() => {
+        const hasShownManual = localStorage.getItem('mapManualMessage');
+
+        if (!hasShownManual) {
+            const showTimer = setTimeout(() => {
+                setShowManual(true);
+            }, 800);
+
+            const hideTimer = setTimeout(() => {
+                setShowManual(false);
+                localStorage.setItem('mapManualMessage', 'shown');
+            }, 1800);
+
+            return () => {
+                clearTimeout(showTimer);
+                clearTimeout(hideTimer);
+            };
+        }
+    }, []);
 
     useEffect(() => {
         if (showRecommendations && recommendContainerRef.current) {
@@ -151,6 +172,10 @@ export default function CreateSchedule() {
             )}
             <div className={Styles.menuBtn} onClick={toggleContainer}>
                 <MdMenuOpen color="white" size={30} />
+                <div className={`${Styles.manualBox} ${showManual ? Styles.show : ''}`}>
+                    <div className={Styles.manualArrow}></div>
+                    <div className={Styles.manualText}>追加されたスポットはここに確認できます。</div>
+                </div>
                 {schedules[activeDateIndex]?.spots.length > 0 && (
                     <div className={Styles.spotCountBox}>
                         <span className={Styles.spotCount}>{schedules[activeDateIndex]?.spots.length}</span>

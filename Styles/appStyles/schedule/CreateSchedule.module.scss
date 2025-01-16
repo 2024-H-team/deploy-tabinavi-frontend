@@ -24,6 +24,39 @@
         justify-content: center;
         align-items: center;
         z-index: 1;
+        .manualBox {
+            position: relative;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            &.show {
+                opacity: 1;
+                visibility: visible;
+            }
+            .manualText {
+                position: absolute;
+                text-align: center;
+                width: 200px;
+                padding: 5px;
+                background: #f4f4f4;
+                color: #302f34;
+                right: 50px;
+                top: -20px;
+                font-size: 12px;
+                font-weight: 700;
+                border-radius: 5px;
+            }
+            .manualArrow {
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 10px 10px 0 10px;
+                border-color: #f4f4f4 transparent transparent transparent;
+                right: 40px;
+                top: -3px;
+            }
+        }
         .spotCountBox {
             position: relative;
             .spotCount {

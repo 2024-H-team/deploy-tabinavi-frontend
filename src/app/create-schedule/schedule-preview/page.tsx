@@ -23,6 +23,7 @@ import { useRouter } from 'next/navigation';
 import PackingItemList from '@/components/create-schedule/PackingItemList';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { truncateTitle, handleBack, handleSaveSchedule, handleDeleteSchedule } from '@/utils/scheduleUtils';
+import ManualDisplay from '@/components/create-schedule/ManualDisplay';
 
 export default function PreviewSpotsContainer() {
     const router = useRouter();
@@ -36,12 +37,38 @@ export default function PreviewSpotsContainer() {
 
     const [isSaving, setIsSaving] = useState(false);
     const [showDeleteButton, setShowDeleteButton] = useState(false);
+    const [showManual, setShowManual] = useState(true);
+
+    useEffect(() => {
+        const hasShownManual = localStorage.getItem('previewManualDisplay');
+        if (hasShownManual) {
+            setShowManual(false);
+            return;
+        }
+
+        const handleInteraction = () => {
+            if (showManual) {
+                setShowManual(false);
+                localStorage.setItem('previewManualDisplay', 'shown');
+                window.removeEventListener('click', handleInteraction);
+            }
+        };
+
+        if (showManual) {
+            window.addEventListener('click', handleInteraction);
+        }
+
+        return () => {
+            window.removeEventListener('click', handleInteraction);
+        };
+    }, [showManual]);
 
     useEffect(() => {
         const profileEdit = sessionStorage.getItem('profileScheduleEdit');
         const editSchedules = sessionStorage.getItem('editSchedules');
         setShowDeleteButton(!!(profileEdit || editSchedules));
     }, []);
+
     useEffect(() => {
         const editSchedules = sessionStorage.getItem('editSchedules');
         const regularSchedules = sessionStorage.getItem('schedules');
@@ -182,6 +209,7 @@ export default function PreviewSpotsContainer() {
 
     return (
         <div className={styles.container}>
+            {showManual && <ManualDisplay />}
             <div className={styles.dateNav}>
                 <div className={styles.header}>
                     {showDeleteButton && (
