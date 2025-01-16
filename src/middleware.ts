@@ -7,7 +7,16 @@ const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5050/a
 export async function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
-    if (pathname.startsWith('/_next') || pathname.startsWith('/static')) {
+    if (
+        pathname.startsWith('/_next') ||
+        pathname.startsWith('/static') ||
+        pathname.startsWith('/images') ||
+        pathname.endsWith('.ico') ||
+        pathname.endsWith('.png') ||
+        pathname.endsWith('.jpg') ||
+        pathname.endsWith('.jpeg') ||
+        pathname.endsWith('.webp')
+    ) {
         return NextResponse.next();
     }
 
