@@ -83,10 +83,10 @@ export default function LoginPage() {
 
                 <form className={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
                     <div className={styles.formGroup}>
-                        <label>ユーザー名</label>
+                        <label>ログインID</label>
                         <input
                             {...register('userName', {
-                                required: 'ユーザー名は必須です',
+                                required: 'ログインIDは必須です',
                             })}
                             className={errors.userName ? styles.error : ''}
                         />
