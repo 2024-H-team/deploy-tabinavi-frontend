@@ -65,6 +65,13 @@ export default function Profile() {
                                 width={150}
                                 height={150}
                             />
+                            <Image
+                                className={styles.avatarImg}
+                                src="/logo1.png"
+                                alt="Avatar"
+                                width={365.5}
+                                height={150}
+                            />
                         </div>
                         <p className={styles.userName}>{truncateTitle('here is username')}</p>
                     </div>

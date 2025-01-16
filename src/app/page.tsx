@@ -75,7 +75,7 @@ export default function LoginPage() {
         <div className={styles.authContainer}>
             <div className={styles.formWrapper}>
                 <div className={styles.logo}>
-                    <Image className={styles.logoImg} src="/logo.png" alt="a" width={150} height={150} />
+                    <Image className={styles.avatarImg} src="/logo1.png" alt="Avatar" width={365.5} height={150} />
                 </div>
                 <div className={styles.header}>
                     <h1>ログイン</h1>
