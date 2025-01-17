@@ -43,6 +43,14 @@ export default function CreateSchedule() {
 
     const stayTimeTimerRef = useRef<NodeJS.Timeout | null>(null);
     const [showManual, setShowManual] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+
+    useEffect(() => {
+        const editSchedules = sessionStorage.getItem('editSchedules');
+        if (editSchedules) {
+            setIsEditing(true);
+        }
+    }, []);
 
     useEffect(() => {
         const saved = sessionStorage.getItem('schedules');
@@ -212,7 +220,10 @@ export default function CreateSchedule() {
                 スポットを追加しました。
             </div>
             <div className={Styles.btnBox}>
-                <Link className={Styles.backBtn} href={'/create-schedule'}>
+                <Link
+                    className={Styles.backBtn}
+                    href={isEditing ? '/create-schedule/schedule-preview' : '/create-schedule'}
+                >
                     戻る
                 </Link>
                 <button onClick={handleCreateScheduleCallback} className={Styles.submitBtn}>
