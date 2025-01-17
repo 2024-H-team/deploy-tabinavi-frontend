@@ -1,6 +1,7 @@
 .ContentWrap {
-    min-height: calc(100% - 120px);
+    min-height: calc(100% - 60px);
     padding: 24px;
+    padding-bottom: 80px;
     margin: auto;
     overflow: auto;
     &::-webkit-scrollbar {
