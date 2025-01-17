@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
         silenceDeprecations: ['legacy-js-api'],
     },
     images: {
-        domains: ['maps.googleapis.com'],
         remotePatterns: [
             {
                 protocol: 'https',
