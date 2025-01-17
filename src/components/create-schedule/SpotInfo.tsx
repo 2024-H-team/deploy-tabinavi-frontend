@@ -111,7 +111,7 @@ export default function SpotInfo({ places, onAddSpot, onClose }: SpotInfoProps) 
     };
     const handleAddSpot = (place: PlaceDetails) => {
         onAddSpot(place);
-        setCurrentTop('60');
+        setCurrentTop('100');
         if (containerRef.current) {
             containerRef.current.scrollTop = 0;
         }

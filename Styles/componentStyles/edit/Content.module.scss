@@ -89,8 +89,16 @@
             .AddItemInput {
                 font-size: 16px;
             }
-            .AddBtn {
+            button {
                 margin-right: 50px;
+                background-color: #0f61a5;
+                font-size: 1.4rem;
+                color: #f1f1f1;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+                border-radius: 4px;
+                width: 50px;
             }
         }
         .PersonalEffectsWrap {
