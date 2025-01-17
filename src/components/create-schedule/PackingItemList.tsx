@@ -9,6 +9,13 @@ type PackingItemListProps = {
 };
 
 export default function PackingItemList({ items, onClose }: PackingItemListProps) {
+    const itemCounts = items.reduce((acc: Record<string, number>, item) => {
+        acc[item] = (acc[item] || 0) + 1;
+        return acc;
+    }, {});
+
+    const uniqueItems = Object.entries(itemCounts);
+
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -22,12 +29,15 @@ export default function PackingItemList({ items, onClose }: PackingItemListProps
             </div>
 
             <div className={styles.body}>
-                {items.length > 0 ? (
+                {uniqueItems.length > 0 ? (
                     <ul className={styles.list}>
-                        {items.map((item) => (
+                        {uniqueItems.map(([item, count]) => (
                             <li key={item} className={styles.listItem}>
                                 <span className={styles.bullet} />
-                                <span className={styles.itemText}>{item}</span>
+                                <span className={styles.itemText}>
+                                    {item}
+                                    {count > 1 ? ` x${count}` : ''}
+                                </span>
                             </li>
                         ))}
                     </ul>

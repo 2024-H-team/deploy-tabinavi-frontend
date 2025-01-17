@@ -200,8 +200,7 @@ export default function PreviewSpotsContainer() {
     };
 
     const getAllPackingItems = useCallback(() => {
-        const allItems = schedules.flatMap((schedule) => schedule.spots.flatMap((spot) => spot.packingList || []));
-        return [...new Set(allItems)];
+        return schedules.flatMap((schedule) => schedule.spots.flatMap((spot) => spot.packingList || []));
     }, [schedules]);
 
     const handleSave = async () => {
