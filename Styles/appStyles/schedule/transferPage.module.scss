@@ -3,7 +3,9 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    min-height: 100vh;
+    max-height: calc(100vh - 70px);
+    padding-bottom: 30px;
+
     position: relative;
 }
 .dateNav {
@@ -79,11 +81,9 @@
 }
 .result {
     width: 100%;
-    height: calc(100vh - 135px);
+    height: auto;
     background-color: #fdfdfd;
     padding-top: 25px;
-    overflow: auto;
-    padding-bottom: 60px;
     &::-webkit-scrollbar {
         display: none;
     }
