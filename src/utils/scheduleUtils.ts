@@ -3,7 +3,7 @@ import apiClient from '@/lib/axios';
 import { useRouter } from 'next/navigation';
 
 // Truncate title to a specified maximum length
-export const truncateTitle = (title: string, maxLength: number = 15): string => {
+export const truncateTitle = (title: string, maxLength: number = 10): string => {
     return title.length > maxLength ? `${title.slice(0, maxLength)}...` : title;
 };
 
