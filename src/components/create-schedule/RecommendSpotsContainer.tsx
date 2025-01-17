@@ -50,17 +50,22 @@ export default function RecommendSpotsContainer({
                         className={Styles.spotCard}
                         onClick={() => handleClickSpot(spot)}
                     >
-                        {spot.photos?.[0] && (
+                        {spot.photos?.[0] ? (
                             <div className={Styles.imageWrapper}>
                                 <Image
                                     src={spot.photos[0].getUrl({ maxWidth: 200, maxHeight: 200 })}
                                     alt={spot.name}
                                     width={200}
                                     height={200}
+                                    className={Styles.image}
                                     style={{
                                         objectFit: 'cover',
                                     }}
                                 />
+                            </div>
+                        ) : (
+                            <div className={Styles.imageWrapper}>
+                                <div className={Styles.noneImg}>画像がございません</div>
                             </div>
                         )}
                         <div className={Styles.spotInfo}>{spot.name}</div>
