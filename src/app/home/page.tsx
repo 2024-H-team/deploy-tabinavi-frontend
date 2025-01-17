@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import ScheduleView from '@/components/home/ScheduleView';
 import styles from '@styles/appStyles/home/Home.module.scss';
 import Footer from '@/components/Footer';
-import { IoSettingsOutline } from 'react-icons/io5';
+// import { IoSettingsOutline } from 'react-icons/io5';
 import Calendar from '@/components/Calendar';
 import apiClient from '@/lib/axios';
 
@@ -33,9 +33,7 @@ export default function Home() {
     return (
         <>
             <div className={styles.ContentWrap}>
-                <div className={styles.Setting}>
-                    <IoSettingsOutline size="24px" />
-                </div>
+                <div className={styles.Setting}></div>
                 <Calendar schedules={schedules} />
                 <div className={styles.ScheduleWrap}>
                     <ScheduleView schedules={schedules} />
