@@ -39,9 +39,9 @@ export default function RegisterPage() {
             setSuccess(true);
         } catch (err) {
             if (err instanceof AxiosError) {
-                setError(err.response?.data?.message || 'Registration failed');
+                setError(err.response?.data?.errors[0].msg || 'エラーが発生しました');
             } else {
-                setError('An unexpected error occurred');
+                setError('エラーが発生しました');
             }
         } finally {
             setLoading(false);
