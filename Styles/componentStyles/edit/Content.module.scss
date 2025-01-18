@@ -82,15 +82,20 @@
         }
         .AddItemForm {
             padding-left: 8px;
+            position: relative;
             button {
                 background-color: #fff;
                 font-size: 1.4rem;
             }
             .AddItemInput {
                 font-size: 16px;
+                width: 100%;
             }
             button {
-                margin-right: 50px;
+                left: 100%;
+                top: 50%;
+                transform: translateY(-50%);
+                position: absolute;
                 background-color: #0f61a5;
                 font-size: 1.4rem;
                 color: #f1f1f1;
