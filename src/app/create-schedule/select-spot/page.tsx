@@ -127,6 +127,7 @@ export default function CreateSchedule() {
     }, [schedules, activeDateIndex]);
 
     const handleCreateScheduleCallback = useCallback(() => {
+        sessionStorage.setItem('edited', 'true');
         handleCreateSchedule(schedules, router);
     }, [schedules, router]);
 

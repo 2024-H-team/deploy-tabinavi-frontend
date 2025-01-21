@@ -288,6 +288,15 @@
                 font-size: 18px;
                 color: #fdfdfd;
                 font-weight: 500;
+                &.noneEdit {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+
+                &:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
             }
             .addButton {
                 height: 50px;

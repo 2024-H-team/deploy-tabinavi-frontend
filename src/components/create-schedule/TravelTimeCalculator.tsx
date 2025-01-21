@@ -14,6 +14,7 @@ interface TravelTimeCalculatorProps {
     destination: google.maps.LatLngLiteral;
     onTransportCalculated?: (transportInfo: TransportInfo) => void;
     transportInfo?: TransportInfo;
+    setHasEdited?: (edited: boolean) => void;
 }
 
 export const TravelTimeCalculator: React.FC<TravelTimeCalculatorProps> = ({
@@ -21,6 +22,7 @@ export const TravelTimeCalculator: React.FC<TravelTimeCalculatorProps> = ({
     destination,
     onTransportCalculated,
     transportInfo,
+    setHasEdited,
 }) => {
     const router = useRouter();
     const [selectedMode, setSelectedMode] = useState<TravelMode>(transportInfo?.mode || 'WALKING');
@@ -62,13 +64,15 @@ export const TravelTimeCalculator: React.FC<TravelTimeCalculatorProps> = ({
         }
     };
 
+    const handleModeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedMode(e.target.value as TravelMode);
+        setHasEdited?.(true);
+        sessionStorage.removeItem('noneEdit');
+    };
+
     return (
         <div className={styles.travelTimeCalculator}>
-            <select
-                value={selectedMode}
-                onChange={(e) => setSelectedMode(e.target.value as TravelMode)}
-                className={styles.modeSelect}
-            >
+            <select value={selectedMode} onChange={handleModeChange} className={styles.modeSelect}>
                 <option value="WALKING">徒歩</option>
                 <option value="DRIVING">車</option>
                 <option value="TRANSIT">電車</option>

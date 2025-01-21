@@ -41,6 +41,21 @@ export default function PreviewSpotsContainer() {
     const [showDeleteButton, setShowDeleteButton] = useState(false);
     const [showManual, setShowManual] = useState(true);
 
+    const [hasEdited, setHasEdited] = useState(false);
+
+    useEffect(() => {
+        const edited = sessionStorage.getItem('edited');
+        const noneEdit = sessionStorage.getItem('noneEdit');
+
+        if (edited) {
+            sessionStorage.removeItem('noneEdit');
+            setHasEdited(true);
+            sessionStorage.removeItem('edited');
+        } else {
+            setHasEdited(!noneEdit);
+        }
+    }, []);
+
     useEffect(() => {
         const hasShownManual = localStorage.getItem('previewManualDisplay');
         if (hasShownManual) {
@@ -63,6 +78,7 @@ export default function PreviewSpotsContainer() {
         if (editSchedules) {
             setSchedules(JSON.parse(editSchedules));
             sessionStorage.setItem('schedules', JSON.stringify(JSON.parse(editSchedules)));
+            sessionStorage.setItem('noneEdit', 'true');
         } else if (regularSchedules) {
             setSchedules(JSON.parse(regularSchedules));
         } else {
@@ -92,6 +108,8 @@ export default function PreviewSpotsContainer() {
                 newSchedules[activeDateIndex] = currentDay;
                 return newSchedules;
             });
+            setHasEdited(true);
+            sessionStorage.removeItem('noneEdit');
         },
         [activeDateIndex],
     );
@@ -114,6 +132,8 @@ export default function PreviewSpotsContainer() {
                 }
                 return newSchedules;
             });
+            setHasEdited(true);
+            sessionStorage.removeItem('noneEdit');
         }
     };
 
@@ -132,6 +152,8 @@ export default function PreviewSpotsContainer() {
                     }
                     return newSchedules;
                 });
+                setHasEdited(true);
+                sessionStorage.removeItem('noneEdit');
             }
         },
         [activeDateIndex],
@@ -193,6 +215,8 @@ export default function PreviewSpotsContainer() {
             }
             return newSchedules;
         });
+        setHasEdited(true);
+        sessionStorage.removeItem('noneEdit');
     };
 
     const handleBackClick = () => {
@@ -213,6 +237,8 @@ export default function PreviewSpotsContainer() {
 
     const handleAddSpotClick = () => {
         router.push('/create-schedule/select-spot');
+        setHasEdited(true);
+        sessionStorage.removeItem('noneEdit');
     };
 
     const handleQuestionClick = (e: React.MouseEvent) => {
@@ -303,6 +329,7 @@ export default function PreviewSpotsContainer() {
 
                             {index < schedules[activeDateIndex].spots.length - 1 && (
                                 <TravelTimeCalculator
+                                    setHasEdited={setHasEdited}
                                     origin={spot.location}
                                     destination={schedules[activeDateIndex].spots[index + 1].location}
                                     onTransportCalculated={(transportInfo) =>
@@ -333,7 +360,11 @@ export default function PreviewSpotsContainer() {
                     予定を追加
                 </div>
                 <div className={styles.btnContainer}>
-                    <button onClick={handleSave} className={styles.saveButton} disabled={isSaving}>
+                    <button
+                        onClick={handleSave}
+                        className={`${styles.saveButton} ${!hasEdited ? styles.noneEdit : ''}`}
+                        disabled={isSaving || !hasEdited}
+                    >
                         {isSaving ? '保存中...' : 'スケジュールを確定する'}
                     </button>
                     <button
