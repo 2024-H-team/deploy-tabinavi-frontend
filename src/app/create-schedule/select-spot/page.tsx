@@ -227,7 +227,7 @@ export default function CreateSchedule() {
                     戻る
                 </Link>
                 <button onClick={handleCreateScheduleCallback} className={Styles.submitBtn}>
-                    スケジュール作成
+                    {isEditing ? 'スケジュール編集' : 'スケジュール作成'}
                 </button>
             </div>
         </div>

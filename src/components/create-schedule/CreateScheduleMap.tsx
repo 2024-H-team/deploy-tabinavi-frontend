@@ -237,7 +237,7 @@ const CreateScheduleMap: React.FC<CreateScheduleMapProps> = ({
                     className={Styles.searchBox}
                 >
                     <div className={Styles.searchContainer}>
-                        <input type="text" placeholder="検索" />
+                        <input type="text" placeholder="ここに行きたい場所を検索" onFocus={(e) => e.target.select()} />
                     </div>
                 </Autocomplete>
 

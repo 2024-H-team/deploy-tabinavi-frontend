@@ -74,7 +74,7 @@ export const handleRecommendClick = async (
     dayEndTime?: string,
 ) => {
     if (schedules[activeDateIndex]?.spots.length === 0) {
-        alert('少なくとも1つの場所を選択してください');
+        alert('少なくとも1つの場所をスケジュールに追加してください');
         return;
     }
     setIsLoading(true);

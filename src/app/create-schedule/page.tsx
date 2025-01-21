@@ -124,15 +124,15 @@ export default function InfoSetup() {
 
         for (const schedule of schedules) {
             if (!schedule.startTime || !schedule.endTime) {
-                alert('すべてのスケジュールで開始時間と終了時間を設定してください。');
+                alert('すべてのスケジュールで出発時間と終了時間を設定してください。');
                 return false;
             }
             if (schedule.startTime === schedule.endTime) {
-                alert('開始時間と終了時間が同じです。');
+                alert('出発時間と終了時間が同じです。');
                 return false;
             }
             if (schedule.startTime > schedule.endTime) {
-                alert('開始時間は終了時間より前である必要があります。');
+                alert('出発時間は終了時間より前である必要があります。');
                 return false;
             }
         }
@@ -188,7 +188,7 @@ export default function InfoSetup() {
                             <p className={styles.date}>{schedule.date}</p>
                             <div className={styles.timePickerGroup}>
                                 <div className={styles.pickers}>
-                                    開始時間
+                                    出発時間
                                     <div className={styles.pickersBlock}>
                                         <WheelPicker
                                             data={hours}
