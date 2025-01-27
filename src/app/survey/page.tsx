@@ -171,7 +171,7 @@ export default function SurveyPage() {
             }
         } catch (error) {
             console.error('Submit error:', error);
-            alert('An error occurred while submitting your answers.');
+            alert('アンケートの送信中にエラーが発生しました。');
         }
     };
 
